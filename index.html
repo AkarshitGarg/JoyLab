@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joy Lab — Your Happiness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='90'>✨</text></svg>">
+</head>
+<body>
+
+<div class="loading-bar" id="loadBar"></div>
+
+<!-- SEARCH BAR -->
+<div class="search-section" id="searchSection">
+  <div class="search-wrapper">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="searchInput" placeholder="Search habits, tips, science...">
+      <button class="search-btn" onclick="performSearch()">🔍 Search</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" onclick="scrollToHome(event)">Joy<span>Lab</span> ✨</a>
+  <ul>
+    <li><a href="#mood">Mood Check</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a href="#habits">Habits</a></li>
+    <li><a href="#quotes">Quotes</a></li>
+    <li><a href="#creators">Creators</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="search-icon" onclick="toggleSearchBar()" title="Search">🔍</button>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Toggle dark mode">🌙</button>
+    <button class="chat-btn" onclick="toggleChat()">💬 Talk to Joy</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="floating-emoji" style="top:15%;left:10%;animation-delay:0s">🌸</div>
+  <div class="floating-emoji" style="top:25%;right:12%;animation-delay:1s">☀️</div>
+  <div class="floating-emoji" style="bottom:25%;left:8%;animation-delay:2s">🎈</div>
+  <div class="floating-emoji" style="bottom:20%;right:10%;animation-delay:0.5s">🌟</div>
+  <div class="floating-emoji" style="top:60%;left:20%;animation-delay:1.5s">🦋</div>
+  <div class="floating-emoji" style="top:40%;right:5%;animation-delay:2.5s">🌈</div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Happiness Project — Class Presentation</div>
+    <h1>Science of<br><em>Being Happy</em></h1>
+    <p class="hero-sub">Explore the psychology, habits, and secrets behind genuine, lasting happiness — backed by science.</p>
+    <div class="hero-ctas">
+      <a href="#mood" class="btn-primary">Check Your Mood →</a>
+      <a href="#science" class="btn-secondary">Explore Science</a>
+    </div>
+  </div>
+</section>
+
+<!-- MOOD CHECKER -->
+<section id="mood">
+  <h2>How are you feeling right now?</h2>
+  <p>Pick your mood and get a personalised happiness tip</p>
+  <div class="mood-emojis">
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'awful')">😢</div>
+      <div class="mood-label">Awful</div>
+    </div>
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'sad')">😕</div>
+      <div class="mood-label">Sad</div>
+    </div>
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'okay')">😐</div>
+      <div class="mood-label">Okay</div>
+    </div>
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'good')">🙂</div>
+      <div class="mood-label">Good</div>
+    </div>
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'great')">😄</div>
+      <div class="mood-label">Great</div>
+    </div>
+    <div>
+      <div class="mood-emoji" onclick="selectMood(this, 'amazing')">🤩</div>
+      <div class="mood-label">Amazing!</div>
+    </div>
+  </div>
+  <div class="mood-response" id="moodResponse"></div>
+</section>
+
+<!-- SCIENCE SECTION -->
+<section id="science">
+  <div class="section-label">The Research</div>
+  <h2>The Science of Happiness 🧠</h2>
+  <div class="cards">
+    <div class="card" onclick="openScienceModal(1)">
+      <div class="card-icon">🧬</div>
+      <h3>The 50/10/40 Rule</h3>
+      <p>Harvard research shows 50% of happiness is genetic, 10% is circumstances — but 40% is fully in your control through daily choices.</p>
+      <span class="card-tag">Psychology</span>
+    </div>
+    <div class="card" onclick="openScienceModal(2)">
+      <div class="card-icon">🤝</div>
+      <h3>Relationships #1</h3>
+      <p>The Harvard Study of Adult Development (80 years!) found that the quality of our relationships is the single biggest predictor of happiness.</p>
+      <span class="card-tag">Social Science</span>
+    </div>
+    <div class="card" onclick="openScienceModal(3)">
+      <div class="card-icon">🙏</div>
+      <h3>Gratitude Rewires You</h3>
+      <p>Writing 3 things you're grateful for daily increases dopamine and serotonin — the same effect as antidepressants, naturally.</p>
+      <span class="card-tag">Neuroscience</span>
+    </div>
+    <div class="card" onclick="openScienceModal(4)">
+      <div class="card-icon">🏃</div>
+      <h3>Movement = Mood</h3>
+      <p>Just 20 minutes of exercise releases endorphins that reduce stress and anxiety and boosts mood for up to 12 hours.</p>
+      <span class="card-tag">Biology</span>
+    </div>
+    <div class="card" onclick="openScienceModal(5)">
+      <div class="card-icon">🎯</div>
+      <h3>Flow State</h3>
+      <p>Mihaly Csikszentmihalyi found that happiness peaks when we're fully absorbed in a meaningful challenge — called "flow."</p>
+      <span class="card-tag">Positive Psychology</span>
+    </div>
+    <div class="card" onclick="openScienceModal(6)">
+      <div class="card-icon">💸</div>
+      <h3>Money & Happiness</h3>
+      <p>Studies show happiness increases with income up to ~₹6 LPA for daily wellbeing — beyond that, experiences and meaning matter more.</p>
+      <span class="card-tag">Economics</span>
+    </div>
+  </div>
+</section>
+
+<!-- HABITS -->
+<section id="habits">
+  <div class="habits-inner">
+    <div class="section-label">Daily Practice</div>
+    <h2>10 Science-Backed Happiness Habits 🌱</h2>
+    <div class="habits-grid">
+      <div class="habit-item" onclick="openHabitModal(1)">
+        <div class="habit-num">1</div>
+        <div class="habit-text">
+          <h4>Morning Gratitude</h4>
+          <p>Write 3 things you're grateful for every morning to rewire your brain for positivity.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(2)">
+        <div class="habit-num">2</div>
+        <div class="habit-text">
+          <h4>Move Your Body</h4>
+          <p>Even a 20-minute walk boosts mood significantly. Exercise is nature's antidepressant.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(3)">
+        <div class="habit-num">3</div>
+        <div class="habit-text">
+          <h4>Mindful Breathing</h4>
+          <p>5 minutes of deep breathing activates your parasympathetic nervous system and reduces cortisol.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(4)">
+        <div class="habit-num">4</div>
+        <div class="habit-text">
+          <h4>Acts of Kindness</h4>
+          <p>Doing something kind for others boosts your own happiness more than doing something for yourself.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(5)">
+        <div class="habit-num">5</div>
+        <div class="habit-text">
+          <h4>Digital Sunset</h4>
+          <p>Avoid screens 1 hour before bed. Quality sleep is the foundation of emotional wellbeing.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(6)">
+        <div class="habit-num">6</div>
+        <div class="habit-text">
+          <h4>Connect Deeply</h4>
+          <p>Have one real, meaningful conversation daily. Surface-level chats don't count!</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(7)">
+        <div class="habit-num">7</div>
+        <div class="habit-text">
+          <h4>Learn Something New</h4>
+          <p>Curiosity and learning triggers dopamine. It keeps the brain young and joyful.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(8)">
+        <div class="habit-num">8</div>
+        <div class="habit-text">
+          <h4>Spend Time in Nature</h4>
+          <p>Just 20 minutes outdoors reduces stress hormones and elevates mood measurably.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(9)">
+        <div class="habit-num">9</div>
+        <div class="habit-text">
+          <h4>Practice Forgiveness</h4>
+          <p>Holding grudges hurts you more than them. Forgiveness is a gift you give yourself.</p>
+        </div>
+      </div>
+      <div class="habit-item" onclick="openHabitModal(10)">
+        <div class="habit-num">10</div>
+        <div class="habit-text">
+          <h4>Celebrate Small Wins</h4>
+          <p>Don't wait for big achievements. Acknowledge every small step — your brain loves it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <div class="section-label">Wisdom Wall</div>
+  <h2>Words That Spark Joy 💛</h2>
+  <div class="quote-display">
+    <p class="quote-text" id="quoteText">"Happiness is not something ready-made. It comes from your own actions."</p>
+    <p class="quote-author" id="quoteAuthor">— Dalai Lama</p>
+  </div>
+  <div class="quote-nav">
+    <button class="q-btn" onclick="prevQuote()">← Previous</button>
+    <button class="q-btn" onclick="nextQuote()">Next →</button>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="habitModal">
+  <div class="modal-content" id="modalContent">
+    <button class="modal-close" onclick="closeHabitModal()">✕</button>
+    <div class="modal-header">
+      <div class="modal-num" id="modalNum"></div>
+      <h3 id="modalTitle"></h3>
+    </div>
+    <p class="modal-description" id="modalDesc"></p>
+    <div class="modal-tips">
+      <h4>How to practice:</h4>
+      <ul id="modalTips"></ul>
+    </div>
+    <div class="modal-science" id="modalScience"></div>
+  </div>
+</div>
+
+<!-- SCIENCE CARD MODAL -->
+<div class="modal-overlay" id="scienceModal">
+  <div class="modal-content" id="scienceModalContent">
+    <button class="modal-close" onclick="closeScienceModal()">✕</button>
+    <div class="modal-header">
+      <div style="font-size: 2.5rem; margin-right: 1rem;" id="scienceIcon"></div>
+      <h3 id="scienceTitle"></h3>
+    </div>
+    <p class="modal-description" id="scienceDesc"></p>
+    <div class="modal-research">
+      <h4>📚 Research Background:</h4>
+      <p id="scienceResearch"></p>
+    </div>
+    <div class="modal-key-findings">
+      <h4>🔍 Key Findings:</h4>
+      <ul id="scienceFindings"></ul>
+    </div>
+    <div class="modal-implementation">
+      <h4>💡 How to Apply:</h4>
+      <p id="scienceApplication"></p>
+    </div>
+  </div>
+</div>
+
+<!-- CREATORS PAGE -->
+<section id="creators">
+  <div class="container">
+    <h1>Meet the Team ✨</h1>
+    <p class="section-subtitle">The minds and hearts behind Joy Lab</p>
+
+    <!-- FOUNDERS -->
+    <div class="creators-section">
+      <h2>Founders & Creators</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-avatar" style="background-image: url('https://api.dicebear.com/7.x/personas/svg?seed=jatindeswal'); background-size: cover; background-position: center;"></div>
+          <h3>Jatin Deswal</h3>
+          <p class="bio">Passionate about happiness science and psychology</p>
+          <div class="social-handles">
+            <a href="https://instagram.com/jatindeswal101" target="_blank" title="Instagram">📱 @jatindeswal101</a>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar" style="background-image: url('https://api.dicebear.com/7.x/personas/svg?seed=akarshitgarg'); background-size: cover; background-position: center;"></div>
+          <h3>Akarshit Garg</h3>
+          <p class="bio">Tech enthusiast dedicated to making happiness accessible</p>
+          <div class="social-handles">
+            <a href="https://instagram.com/akarshit_garg11" target="_blank" title="Instagram">📱 @akarshit_garg11</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIAL THANKS -->
+    <div class="creators-section">
+      <h2>Special Thanks To 🙏</h2>
+      <p class="thanks-intro">For their wonderful appearance and invaluable contributions</p>
+      <div class="team-grid">
+        <div class="team-member thanks-member">
+          <div class="member-avatar" style="background-image: url('https://api.dicebear.com/7.x/personas/svg?seed=rishikarajput'); background-size: cover; background-position: center;"></div>
+          <h3>Rishika Rajput</h3>
+        </div>
+        <div class="team-member thanks-member">
+          <div class="member-avatar" style="background-image: url('https://api.dicebear.com/7.x/personas/svg?seed=kritvichattwal'); background-size: cover; background-position: center;"></div>
+          <h3>Kritvi Chattwal</h3>
+        </div>
+        <div class="team-member thanks-member">
+          <div class="member-avatar" style="background-image: url('https://api.dicebear.com/7.x/personas/svg?seed=ayushsharma'); background-size: cover; background-position: center;"></div>
+          <h3>Ayush Sharma</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div class="creators-section contact-section">
+      <h2>Get In Touch 💌</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:hello@joylab.com">hello@joylab.com</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Location</h3>
+          <p>India</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🌐</div>
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="https://instagram.com/amityuniversity.noida" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/school/n.t.s.-b.ed.-college-of-education-parbhani/" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SURPRISE BUTTON -->
+<div class="surprise-section">
+  <button class="surprise-btn" onclick="handleSurprise()">🎁 Get a Surprise</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Joy<span>Lab</span></div>
+  <p>A Happiness Project — Built with ❤️ and Science</p>
+</footer>
+
+<!-- CHATBOT FAB -->
+<button class="chat-fab" onclick="toggleChat()" id="chatFab">💬</button>
+
+<!-- CHAT WINDOW -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">😊</div>
+    <div class="chat-info">
+      <h4>Joy — Happiness Bot</h4>
+      <p><span class="online-dot"></span>Always here for you</p>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="quick-replies" id="quickReplies">
+    <button class="qr" onclick="sendQuick('What is happiness?')">What is happiness?</button>
+    <button class="qr" onclick="sendQuick('Give me a happiness tip')">Happiness tip 💡</button>
+    <button class="qr" onclick="sendQuick('I am feeling sad')">I feel sad 😕</button>
+    <button class="qr" onclick="sendQuick('How to be more positive?')">Be positive ✨</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask Joy anything..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="send-btn" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<!-- SURPRISE POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <div class="popup-emoji">🎉</div>
+    <h2>Happy Surprise!</h2>
+    <p>Here's a Calendar for you to keep your happiness high! 🌟</p>
+    <p>Download it and track your daily happiness journey.</p>
+    <div class="popup-buttons">
+      <button class="popup-btn popup-btn-primary" onclick="downloadHappinessCalendar()">📥 Download PDF</button>
+      <button class="popup-btn popup-btn-secondary" onclick="closePopup()">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
